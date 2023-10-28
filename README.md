@@ -50,6 +50,15 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
   ```bash
   npm install
   ```
+  ### Prepare the enviroment
+  1. Create a file called ***.env*** and type the environment variables:
+  ```sh
+  SISCOP_SECRET=[insert the value to your session secret]
+  HOST=[your host to create a server]  Ex: 127.0.0.1
+  PORT=[the port to run the application]  Ex: 9999
+  DB_LINK=[your mongodb link]  Ex:mongodb+srv://[user]:[password]@[cluster]/siscop?retryWrites=true&w=majority
+  ```
+
   ### Initiate Database
   1. Create collections with initial values ​​for the application to work. (It is recommended to use replicaset):
   ```bash
@@ -60,14 +69,7 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
   Connected to Database
   Collections Created
   ```
-  ### Prepare the enviroment
-  1. Create a file called ***.env*** and type the environment variables:
-  ```sh
-  SISCOP_SECRET=[insert the value to your session secret]
-  HOST=[your host to create a server]  Ex: 127.0.0.1
-  PORT=[the port to run the application]  Ex: 9999
-  DB_LINK=[your mongodb link]  Ex:mongodb+srv://[user]:[password]@[cluster]/siscop?retryWrites=true&w=majority
-  ```
+    
 ## Running
   1. To be albe to run the application you must use:
   ```bash
