@@ -16,15 +16,15 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
 + **Asynchronous AJAX Calls:** The application utilizes asynchronous AJAX calls to provide seamless interactions and real-time updates to users. This enhances the user experience by minimizing page reloads.
 
 <div style="display: inline">
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipMBzH1ieRYlCbTQv9Ls-pkRwEVeLiBrhbs7Unw?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipPwB8HHZBVWAxbOH6sxGmxmSQElCUVfFkAUWdA?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />  
+<img src="https://lh3.googleusercontent.com/pw/ADCreHekDtWBt0o_qs1TuaIieE5v9qPmeL5bmy0_SZ6cLB0DOH5ber4Wt8Ub24dauIZst7n7Vqe7LUU90l_v8IAWF0F-Q2oAuzR9wv0VSdmj09wHntzv64cA6od4HT8ToQ8M1VA5ndQqpBOCjFm77ZziDA=w1697-h924-s-no?authuser=1" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcpN7mZAZnSgeMnI_vqQMZofUCu-DSt-8PKXzlzvL79ccnVlnnY-FndmCTr-IB1c3cCf2lbh740ramiZ1Ouzd7rTWm80ALE6WaekqWKF7NKT8v8yWlDBUAaAvIF0kSl7wOyvCS26dSLVFxo1r1MPQ=w1702-h924-s-no?authuser=1" width="400px" />  
 </div>
 <div style="display: inline">
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipNyc_SIUOXI2TetOPiEaxi0joHgDwDI2LdOfj0?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipO3a9rI5FHvTniRF1Xf9vda0Miv7HAKK3FmJnk?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />  
+<img src="https://lh3.googleusercontent.com/pw/ADCreHdSw_Sk1f9R-97bYxqTWps3Ev4qOOQdPHJDkr8B7L_r9v4lmHtzrMMcqc8OW_2NTILyX0mC28WuoNmQZp5KGN09FLpHlzHBAP1R2pyZXabhujFFAXOfFhnJiK483y3VaX0nNNwuFzKeuNyvK83Ohw=w1702-h924-s-no?authuser=1" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHf1IVgxs94rNLHOcaBWdZFkg_XLoDrRZAepNY-JmBXNNV-85IbqsxNme7l4-16UjV8UvFXPbWpHWoQYOudEBIs83aTf33seecHhuKXy2XlOWHZGj2i-24dD392UZAqmfAPqUC4oa8FRcBfD_kvJgg=w1695-h924-s-no?authuser=1" width="400px" />  
 </div>
 <div style="display: inline">
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipOQrSCvcezc_97RXdFzuDla6zNVT0nCxB9qLrY?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHesYFFGzHOYPcjvxQpyTh8XBU7ebiVeUaKVCHVSSEFNajPZ_5VUgjBwDKWX4My9nNdao3-MtXzYRqpur9RP0nbaXpI3EGX4rk6sInJXkAypTAnHP7TFqlcCrm6sxJ0JUuj-QgtPsepKAo845g1xFw=w1698-h924-s-no?authuser=1" width="400px" />
 <img src="https://lh3.googleusercontent.com/pw/ADCreHf_D38dameta2OyNW-AxlZBjzSp0iWUo9yA-oRfPJS2YDHihb3BUjcobJFd0ZO7KLzE2fs3Zfswn2Nzu231piBAUjteTHjTns9Plru_bU84YQ7_U3y23sBK3v9eTObCigsuJQKj1j2ui15ZG3NMlA=w1700-h924-s-no?authuser=0" width="400px" />  
 </div>
  
