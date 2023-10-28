@@ -38,7 +38,7 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
   ### Using Git
   1.   Clone the project from github. Change "myproject" to your project name or Download using the "Download Zip" button:
   ```bash
-  git clone https://github.com/Cardosojl/SisCoP_legacy.git ./myproject
+  git clone https://github.com/Cardosojl/SisCoP_legacy_.git ./myproject
   ```
   ### Download and Uncompress
   1. Donwload the repository.
