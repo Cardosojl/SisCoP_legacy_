@@ -1,0 +1,205 @@
+<div class="mainwindow">
+    <div class="content_window">        
+        <h2>Contratação de Bens</h2>
+        <hr>  
+        <form id="formp" method="post" >          
+            <div>
+            <label>Objeto do processo:</label>
+            <input type="text" name="object" class="longtext" id="object">
+            </div>
+            <div>
+                <label>Nup:</label>
+                <input type="text" name="nup" id="nup">
+            </div>
+            <div>
+                <label>Nº do Diex Req.:</label>                
+                <input type="text" name="diexreq" id="diexreq" class="smalltext">                
+            </div>        
+            <hr>
+            <div>
+                <label>Setor Demandante:</label>
+                <select name="dvname">
+                    <option value="Depósito">Depósito</option>                    
+                </select>
+            </div>
+            <div id="sectorselect">
+                <label>Origem do Processo:</label>                
+            </div>
+            <div>
+                <label>Tipo do processo</label>
+                <select name="process">
+                    <option value="0">Pregão Eletrônico</option>
+                    <option value="1">Dispensa Eletrônica</option>
+                </select>
+            </div>            
+            <div>
+                <label>Forma de aquisição</label>
+                <select name="acquisition">
+                    <option value="T">Tradicional</option>
+                    <option value="S">SRP</option>
+                </select>
+            </div>
+            <div>
+                <label>Porcesso possuí produtos perecíveis?</label>
+                <select name="perish">
+                    <option value="false">Não</option>
+                    <option value="true">Sim</option>
+                </select>
+            </div>
+            <hr>
+            <div>
+                <br>                
+                <h4>Equipe de Planejamento da Contratação</h4>
+                <br>
+                <div class="flexorientation--start">
+                    <div>
+                        <label>Número do Ofício de Nomeação:</label>
+                        <input type="text" name="binr" class="smalltext">
+                    </div>
+                    <div>
+                        <label>Data:</label>
+                        <input type="text" name="bidate">
+                    </div>
+                </div>
+                <div class="flexorientation--start">
+                    <div id="membersdiv">
+                    </div>
+                    <div id="buttonsml">
+                    </div>
+                </div>                
+            </div>       
+            <hr>
+            <div>
+                <br>                
+                <h4>Responsáveis pelo Processo</h4>
+                <br>
+                <div class="display-flex-start">
+                    <div>
+                        <label>Chefe da Divisão: </label>
+                        <input type="text" name="chdvname" id="chdvname" class="mediumtext">
+                    </div>
+                    <div>
+                        <label>Post/Grad: </label>
+                        <select name="chdvpg">
+                            <option value="0"></option>
+                            <option value="Cel">Cel</option>
+                            <option value="Tc">Tc</option>
+                            <option value="Maj">Maj</option>
+                            <option value="Cap">Cap</option>
+                            <option value="1º Ten">1º Ten</option>
+                            <option value="2º Ten">2º Ten</option>
+                            <option value="Asp">Asp</option>
+                            <option value="S Ten">S Ten</option>
+                            <option value="1º Sgt">1º Sgt</option>
+                            <option value="2º Sgt">2º Sgt</option>
+                            <option value="3º Sgt">3º Sgt</option>                                    
+                        </select>
+                    </div>
+                </div>           
+            </div>
+            <hr>
+            <div>
+                <div class="display-flex-start">
+                    <div>
+                        <label>Fiscal Administrativo: </label>
+                        <input type="text" name="fiscalname" id="fiscalname" class="mediumtext">
+                    </div>
+                    <div>
+                        <label>Post/Grad: </label>
+                        <select name="fiscalpg">
+                            <option value="0"></option>
+                            <option value="Cel">Cel</option>
+                            <option value="Tc">Tc</option>
+                            <option value="Maj">Maj</option>
+                            <option value="Cap">Cap</option>
+                            <option value="1º Ten">1º Ten</option>
+                            <option value="2º Ten">2º Ten</option>                                    
+                        </select> 
+                    </div>               
+                </div>                    
+            </div>
+            <hr>
+            <div>
+                <div class="display-flex-start">
+                    <div>
+                        <label>Chefe do Suprimento: </label>
+                        <input type="text" name="chsupname" id="chsupname" class="mediumtext">
+                    </div>
+                    <div>
+                        <label>Post/Grad: </label>
+                        <select name="chsuppg">
+                            <option value="0"></option>
+                            <option value="Cel">Cel</option>
+                            <option value="Tc">Tc</option>
+                            <option value="Maj">Maj</option>
+                            <option value="Cap">Cap</option>
+                            <option value="1º Ten">1º Ten</option>
+                            <option value="2º Ten">2º Ten</option>
+                            <option value="Asp">Asp</option>
+                            <option value="S Ten">S Ten</option>
+                            <option value="1º Sgt">1º Sgt</option>
+                            <option value="2º Sgt">2º Sgt</option>
+                            <option value="3º Sgt">3º Sgt</option>                                     
+                        </select>
+                    </div>
+                </div>                          
+            </div>
+            <hr>
+            <div>
+                <div class="display-flex-start">
+                    <div>
+                        <label>Ordenador de Despesas: </label>
+                        <input type="text" name="cmdname" id="cmdname" class="mediumtext">
+                    </div>
+                    <div>
+                        <label>Post/Grad: </label>
+                        <select name="cmdpg">
+                            <option value="0"></option>
+                            <option value="Cel">Cel</option>
+                            <option value="Tc">Tc</option>
+                            <option value="Maj">Maj</option>
+                            <option value="Cap">Cap</option>
+                            <option value="1º Ten">1º Ten</option>
+                            <option value="2º Ten">2º Ten</option>                                    
+                        </select>
+                    </div>
+                </div>                                         
+            </div>
+            <hr>
+            <div class="flexorientation--start">
+                <div>
+                    <label>Dia:</label>
+                    <input type="text" class="smalltext" name="dayp">
+                    <label>/</label>   
+                </div>
+                <div>
+                    <label>Mês:</label>
+                    <input type="text" name="monthp">
+                    <small>(extenso)</small>
+                    <label>/</label>                    
+                </div>                
+                <div>
+                                                                       
+                    <label>Ano:</label>
+                    <input type="text" class="smalltext" name="yearp">
+                </div>
+            </div>
+            <hr>
+            <div>
+                <label for="file" class="button_file">Anexar Mapa</label>
+                <input type="file" id="file" name="file" value="" class="file" required>
+                <span id="filename" class="filename"></span required>
+                
+            </div>
+            <div class="area_send">
+                <input type="submit" value="Termo de Referência" disabled id="TR" class="button_disable">
+                <input type="submit" value="Certificado de Adoção"  disabled id="CA" class="button_disable">
+                <input type="submit" value="Analise Crítica" id="AC" class="button_disable">
+                <input type="submit" value="Formalização da Demanda" id="DFD" class="button_disable">
+                <input type="submit" value="Gerenciamento de Risco" disabled id="GR" class="button_disable">              
+                <input type="submit" value="Diex Req" id="DR" class="button_disable">                                                   
+            </div>
+        </form>        
+    </div>
+    <script type="module" src="/js/document_maker/assetsForm.js"></script>
+</div>

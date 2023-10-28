@@ -1,0 +1,16 @@
+<div class="navbar">
+    
+        <div class="navbar_logo">
+            <a href="/mensageiro/caixadeentrada"><img id="logo" src="/img/logo.png"/></a>
+            <div class="navbar_title">
+                <h3>SisCoP</h3>
+            </div>               
+        </div>
+        {{#if user}}
+        <div class="navbar_profile">            
+            <a href="/profile/{{name}}" class="navbar_link flexorientation--start"><p>{{pg}} </p><p id="idusername">{{name}}</p><p id="idusersection">{{section}}</p></a>            
+            <p>|</p>
+            <a href="/logout" class="navbar_link"><p>Sair</p></a>
+        </div>
+        {{/if}}    
+</div>

@@ -1,0 +1,57 @@
+{{#if (admin level 10)}}
+<div class="logwindow" >
+    <div class="content_window">
+        {{#if errors}}
+        {{#each errors}}
+        <div class="error_message"><p>{{text}}</p></div>
+        {{/each}}        
+        {{else}}
+        {{/if}}
+        <h2>Registar Usuário</h2>
+        <hr>
+        <form action="/saveregister" method="POST">
+            <div>
+                <label>Nome: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label>Senha: </label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>                
+                <label>Posto/Graduação:</label>
+                <select name="pg" id="pg">
+                    <option value="0" ></option>
+                    <option value="Cel">Cel</option>
+                    <option value="Ten Cel">Ten Cel</option>
+                    <option value="Maj">Maj</option>
+                    <option value="Cap">Cap</option>
+                    <option value="1º Ten">1º Ten</option>
+                    <option value="2º Ten">2ºTen</option>
+                    <option value="Asp">Asp</option>
+                    <option value="Sub Ten">Sub Ten</option>
+                    <option value="1º Sgt">1º Sgt</option>
+                    <option value="2º Sgt">2º Sgt</option>
+                    <option value="3º Sgt">3º Sgt</option>
+                    <option value="Cb">Cb</option>
+                    <option value="Sd">Sd</option>
+                </select>
+            </div>
+            <div>               
+                <div id="sectiondiv">
+                    <label>Seção: </label>
+
+                </div>
+                
+            </div>
+            <div>
+                <label>Level: </label>
+                <input type="text" name="level" id="level">
+            </div>
+            <input type="submit" class="button" value="Cadastrar">
+        </form>
+    </div>
+
+</div>
+<script type="module" src="/js/profiles/registerProfile.js"></script>
+{{/if}}

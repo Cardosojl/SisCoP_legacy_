@@ -1,0 +1,45 @@
+<div class="mainwindow window_normal">
+    <div class="content_window">
+        {{#if errors}}
+        {{#each errors}}
+        <div class="error_message"><p>{{text}}</p></div>
+        <br>
+        {{/each}}        
+        {{else}}
+        {{/if}}
+        <h2>Novo Processo</h2>        
+        <hr>
+        <form id="formp">
+            <div>
+                <label>Nome:</label>
+                <input type="text" class="mediumtext" name="object" required>                
+            </div>
+            <div>
+                <label>Nup:</label>
+                <input type="text" class="mediumtext" name="nup" required>
+                <small>Número de 17 digitos</small>
+            </div>
+            <div id="origindiv">
+                <label>Origem:</label>                
+            </div>
+            <div>
+                <label>Forma de Aquisição:</label>                
+                <select name="category">
+                    <option value=""></option>
+                    <option value="Licitação">Licitação</option>
+                    <option value="Dispensa">Dispensa de Licitação</option>
+                    <option value="Inexigibilidade">Inexigibilidade</option>
+                    <option value="Carona">Carona</option>
+                </select>
+                <small>(opcional)</small>
+            </div>
+            <div class="flexorientation--start">
+                <label>Descrição:</label>
+                <textarea class="param_text_description" name="description"></textarea>
+                <small>(opicional)</small>
+            </div>
+            <input id="submitprocess" type="submit" value="Criar" class="button">
+        </form>            
+    </div>
+</div>
+<script type="module" src="/js/document_reader/createProcess.js"></script>

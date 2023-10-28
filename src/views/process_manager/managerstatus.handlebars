@@ -1,0 +1,54 @@
+<div class="flexorientation--start">
+    <div class="mainwindow" style="border-radius: 3px 0px 0px 3px;">
+            <div class="content_window">
+                <div class="flexorientation--spaceb">
+                    <h2>{{process.title}}</h2>
+                    <h2 id="year">{{process.year}}</h2>                       
+                </div>                
+                <hr>
+                <div style="margin-bottom: 15px;">
+                    <h3 style="display: inline;">Nup:</h3>
+                    <p style="display: inline;">{{process.nup}}</p>
+                </div>
+                <div style="margin-bottom: 15px;">                    
+                    <h3 style="display: inline;">Forma de Aquisição: </h3>
+                    <p style="display: inline;">{{process.category}}</p>
+                </div>
+                <div style="margin-bottom: 15px;">                    
+                    <h3 style="display: inline;">Origem:</h3>
+                    <p style="display: inline;">{{process.origin.name}}</p>
+                </div>
+                <div style="margin-bottom: 15px;">                    
+                    <h3 style="display: inline;">Data de Inicio: </h3>
+                    <p style="display: inline;">{{process.date}}</p>            
+                </div>
+                <hr>           
+                <h3 style="margin-bottom: 5px;">Descrição: </h3>
+                {{#if process.description}}
+                <p style="margin-bottom: 15px;">{{process.description}}</p>
+                {{else}}
+                <p>Processo sem descrição.</p>
+                {{/if}}
+                <hr>
+                <h3 style="margin-bottom: 5px;">Documentações:</h3>
+                
+                <div id="list" class="flexorientation--start" style="flex-wrap: wrap; width: 100px;">
+                    <!--<input type="hidden" id="done" value="{{process.done_dir}}">-->
+                </div>
+                                 
+
+            </div>        
+    </div>
+    <div class="statuswindow">
+        <div class="statusdiv">
+            <div style="margin-top: 10px;">
+                <h2>Anotações</h2>
+                <hr>
+            </div>
+            <div id="statesdiv">
+
+            </div>                  
+        </div>
+    </div>
+</div>
+<script type="module" src="/js/process_manager/managerFiles.js"></script>
