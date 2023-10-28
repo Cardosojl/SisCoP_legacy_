@@ -25,7 +25,7 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
 </div>
 <div style="display: inline">
 <img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipOQrSCvcezc_97RXdFzuDla6zNVT0nCxB9qLrY?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />
-<img src="https://photos.google.com/u/1/share/AF1QipMmEiTA-Q2ZiiDJi0A-6igoS2249b7UkCI8oKrCw3ylEtxMqODMGNdERKraY9Dq2Q/photo/AF1QipO0DMeRnoWIvgmSIdx3KAJ9MnFXhKBWQxAM-X8?key=NmJ2VUNrcWNabWFnQzFuMlBsUjF2MjZXRW1RVnVB" width="400px" />  
+<img src="https://lh3.googleusercontent.com/pw/ADCreHf_D38dameta2OyNW-AxlZBjzSp0iWUo9yA-oRfPJS2YDHihb3BUjcobJFd0ZO7KLzE2fs3Zfswn2Nzu231piBAUjteTHjTns9Plru_bU84YQ7_U3y23sBK3v9eTObCigsuJQKj1j2ui15ZG3NMlA=w1700-h924-s-no?authuser=0" width="400px" />  
 </div>
  
 ## Requirements
