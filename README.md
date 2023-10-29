@@ -14,7 +14,10 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
 + **Replication Set:** SisCoP is built using MongoDB with Replication Set, ensuring data redundancy, high availability, and fault tolerance.
 
 + **Asynchronous AJAX Calls:** The application utilizes asynchronous AJAX calls to provide seamless interactions and real-time updates to users. This enhances the user experience by minimizing page reloads.
+<hr>
 
++ **PROCESS MANAGEMENT**
+  
 <div style="display: inline">
 <img src="https://lh3.googleusercontent.com/pw/ADCreHekDtWBt0o_qs1TuaIieE5v9qPmeL5bmy0_SZ6cLB0DOH5ber4Wt8Ub24dauIZst7n7Vqe7LUU90l_v8IAWF0F-Q2oAuzR9wv0VSdmj09wHntzv64cA6od4HT8ToQ8M1VA5ndQqpBOCjFm77ZziDA=w1697-h924-s-no?authuser=1" width="400px" />
 <img src="https://lh3.googleusercontent.com/pw/ADCreHcpN7mZAZnSgeMnI_vqQMZofUCu-DSt-8PKXzlzvL79ccnVlnnY-FndmCTr-IB1c3cCf2lbh740ramiZ1Ouzd7rTWm80ALE6WaekqWKF7NKT8v8yWlDBUAaAvIF0kSl7wOyvCS26dSLVFxo1r1MPQ=w1702-h924-s-no?authuser=1" width="400px" />  
@@ -23,10 +26,27 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
 <img src="https://lh3.googleusercontent.com/pw/ADCreHdSw_Sk1f9R-97bYxqTWps3Ev4qOOQdPHJDkr8B7L_r9v4lmHtzrMMcqc8OW_2NTILyX0mC28WuoNmQZp5KGN09FLpHlzHBAP1R2pyZXabhujFFAXOfFhnJiK483y3VaX0nNNwuFzKeuNyvK83Ohw=w1702-h924-s-no?authuser=1" width="400px" />
 <img src="https://lh3.googleusercontent.com/pw/ADCreHf1IVgxs94rNLHOcaBWdZFkg_XLoDrRZAepNY-JmBXNNV-85IbqsxNme7l4-16UjV8UvFXPbWpHWoQYOudEBIs83aTf33seecHhuKXy2XlOWHZGj2i-24dD392UZAqmfAPqUC4oa8FRcBfD_kvJgg=w1695-h924-s-no?authuser=1" width="400px" />  
 </div>
+<br>
+
++ **SENDING MESSAGES AND PROCESSES**
+
 <div style="display: inline">
 <img src="https://lh3.googleusercontent.com/pw/ADCreHesYFFGzHOYPcjvxQpyTh8XBU7ebiVeUaKVCHVSSEFNajPZ_5VUgjBwDKWX4My9nNdao3-MtXzYRqpur9RP0nbaXpI3EGX4rk6sInJXkAypTAnHP7TFqlcCrm6sxJ0JUuj-QgtPsepKAo845g1xFw=w1698-h924-s-no?authuser=1" width="400px" />
 <img src="https://lh3.googleusercontent.com/pw/ADCreHf_D38dameta2OyNW-AxlZBjzSp0iWUo9yA-oRfPJS2YDHihb3BUjcobJFd0ZO7KLzE2fs3Zfswn2Nzu231piBAUjteTHjTns9Plru_bU84YQ7_U3y23sBK3v9eTObCigsuJQKj1j2ui15ZG3NMlA=w1700-h924-s-no?authuser=0" width="400px" />  
 </div>
+<br>
+
++ **AUTOMATION OF THE GENERATION OF BIDDING FILES FROM TABLES**
+  
+ <div style="display: inline">
+<img src="https://lh3.googleusercontent.com/pw/ADCreHdPw37sizoUO_jARzviD893rIaZXeW0S-2plsDYmuoohlZXO7iF3MPDwnHQtYVUXhwsixmtdSM63hpHjF9K8DxxNyJABnsB5NFaXvt8R67C-tZkUaVuBfL3VcNxIipu3NS6395EKDl8iKeXl1dcpA=w1876-h810-s-no?authuser=1" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHeGvhWFFXJeO93qb7uSEl3_yQiLAbDF6_7aGNjnREXIPqDkDnSLKsSgEefvCuL30S--gdGIzsAxyo8R7SfibzRW1F_nePN6AMGRrk5klGx6nCFW5nbojibN3Qg24kiB3FmtOn7ZkDQWo9s1vrn2sw=w1696-h924-s-no?authuser=1" width="400px" />  
+</div>
+<div style="display: inline">
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcfq7CVQugCtlJhPpb6fDwRVj1KJl700nUZJm8oteqF9DQ3fS6mbIoCUPCyqV40WEFzMoZ08Az0VGnBOfFU8f3oBMRYoth9lQu9NsMmEfT7veL25OE1X3l614VQJ2qwfLPBQz9pBZ31_tPxsaAPLw=w1715-h924-s-no?authuser=1" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHcDBkHS2iE29LSkM_wfcV88OwRpt8eajlmxCyDNvmXDNS-5hPPFldzzqk2dUQOx4V3csOHL1dergrdTXlY7dNdZ2Y9W7jThZvK8oPv-j9PAxgiSnERxOr8oBFdeAETdrj3Ovz3J_ljU6fg4ckDSVw=w1700-h924-s-no?authuser=1" width="400px" />  
+</div>
+<img src="https://lh3.googleusercontent.com/pw/ADCreHfESYeuN37lwVUAh1bvAMfyP27F_nZIXSzK9oSMkQXAXkCXYRXYq5LYD4heDSdZPGhPxr8NBcYYGd_2OSM_GllCpF3-w741Nfm68O89woP6Ww88_cUg2OvFbEWdgFplvUjP5w89bldSs3fz0P5-_w=w1710-h924-s-no?authuser=1" width="400px" />
  
 ## Requirements
 

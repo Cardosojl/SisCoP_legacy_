@@ -71,12 +71,10 @@ class AC {
             return {text: `${body.resp}, ${body.role || null}, `, bold: true}
             
         }else{
-            const respArray = [];
             if(body.resp.length == body.role.length && body.resp.length == body.resppg.length){                
                 return {text: `${body.resp[0]}, ${body.role[0] || null}, `, bold: true}
             }                 
         }
-
     }
 
     static #columnsPublic(){ //função que retorna o array com todos os orçamentos de internet parametro *worksheets   
@@ -223,17 +221,17 @@ class AC {
            let qnt = 0
            let valid = 0
            for(let j = 0; j < allitens[i].length; j++){
-               if(allitens[i][j] != undefined){
+               if(allitens[i][j] !== undefined){
                    valid++
+                   if(allitens[i][j] > this.map.Analise[i +2].__EMPTY_5 || allitens[i][j] < this.map.Analise[i+2].__EMPTY_6){
+                       qnt++
+                   }
                }
-               if(allitens[i][j] > this.map.Analise[i +2].__EMPTY_5 || allitens[i][j] < this.map.Analise[i+2].__EMPTY_6){
-                   qnt++
-               }
-           }
+           }           
            if(valid - qnt < 3){
                itens.push( i +1) 
-           }           
-       }       
+           }
+        }
        return itens    
    }
    
@@ -515,16 +513,16 @@ class AC {
 
    static item114(){
        let publics = this.columnsPublic
-       let internet = this.#internetQnt();        
+       let internet = this.#internetQnt();
        let count = 0;
 
        for(let j = 0; j < internet.length; j++){
            let i = internet[j]                      
 
-           if(publics[i -1][0] == undefined){
+           if(publics[i -1][0] != undefined){
                count++
-           }            
-       }  
+           }      
+       }
 
        if(internet.length == count){            
            return null
@@ -598,7 +596,6 @@ class AC {
    static analysis(item){   // funcção que captura todos os valores do form e gera os dados do pdf com elas
     let thirth = this.item113()    
     let fourth = this.item114();
-    console.log(fourth);
     let table = this.#generateTable()
     
     if(thirth == null && fourth == null){
