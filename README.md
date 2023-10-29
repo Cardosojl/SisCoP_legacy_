@@ -39,7 +39,7 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
 + **AUTOMATION OF THE GENERATION OF BIDDING FILES FROM TABLES**
   
  <div style="display: inline">
-<img src="https://lh3.googleusercontent.com/pw/ADCreHdPw37sizoUO_jARzviD893rIaZXeW0S-2plsDYmuoohlZXO7iF3MPDwnHQtYVUXhwsixmtdSM63hpHjF9K8DxxNyJABnsB5NFaXvt8R67C-tZkUaVuBfL3VcNxIipu3NS6395EKDl8iKeXl1dcpA=w1876-h810-s-no?authuser=1" width="400px" />
+<img src="https://lh3.googleusercontent.com/pw/ADCreHd5KuMha1Ild9mpgWHNRB-a_lOgsyWj_udk0kkE2RB6fgFwfF3YT38rSY4iiUeWuqYSlA3MfbJnl0kARc_NNNIz1W3yOlDg7kcHNxFunEFPHrsSdj6EyjmfUtKabogSjO7bXBD7VFjM5M2Up-Q90A=w1871-h808-s-no?authuser=1" width="400px" />
 <img src="https://lh3.googleusercontent.com/pw/ADCreHeGvhWFFXJeO93qb7uSEl3_yQiLAbDF6_7aGNjnREXIPqDkDnSLKsSgEefvCuL30S--gdGIzsAxyo8R7SfibzRW1F_nePN6AMGRrk5klGx6nCFW5nbojibN3Qg24kiB3FmtOn7ZkDQWo9s1vrn2sw=w1696-h924-s-no?authuser=1" width="400px" />  
 </div>
 <div style="display: inline">
