@@ -16,7 +16,7 @@ document.addEventListener('click', (e) => {
     }
 })
 
-async function getSections(){
+/*async function getSections(){
     try {
         const sections = await request({
             method: 'POST',
@@ -32,4 +32,4 @@ async function getSections(){
 function generateSections(sections){
     const sectionsSelect = createSectionsSelect(sections, '','origin', 'origin');
     appendElements(document.getElementById('origindiv'), [sectionsSelect]);
-}
+}*/

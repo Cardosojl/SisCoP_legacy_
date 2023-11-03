@@ -21,6 +21,8 @@ const converter = require('./src/controller/converter/converterController');
 
 const ajaxController =  require('./src/controller/xmlHttpRequest/ajaxRequestControler');
 
+const ajaxControllers =  require('./src/controller/xmlHttpRequest/ajaxRequestsControler'); /** */
+
 
 router.use(log);
 router.use(profile);
@@ -33,6 +35,8 @@ router.use('/mensageiro', messenger);
 router.use('/acompanharprocessos', processManager);
 router.use('/conversor', converter);
 router.use('/requests', ajaxController);
+
+router.use('/request', ajaxControllers);
 
 
 module.exports = router;

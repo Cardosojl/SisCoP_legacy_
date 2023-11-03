@@ -36,6 +36,7 @@ function setHeader(extension){
 
 const storage = multer.memoryStorage({
     originalName: function(req, file, cb){
+        console.log(file)
         let originalName = Buffer.from(file.originalname, 'latin1').toString('utf8');
         let clearName = originalName.slice(0, originalName.lastIndexOf('.')).replace(/\./g, ' ');
         let extension = originalName.slice(originalName.lastIndexOf('.', originalName.length-1));

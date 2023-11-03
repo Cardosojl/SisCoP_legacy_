@@ -20,7 +20,12 @@
                 <small>Número de 17 digitos</small>
             </div>
             <div id="origindiv">
-                <label>Origem:</label>                
+                <label>Origem:</label>
+                <select>
+                    {{#each sections}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>             
             </div>
             <div>
                 <label>Forma de Aquisição:</label>                

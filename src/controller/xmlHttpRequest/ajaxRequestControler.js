@@ -140,6 +140,7 @@ router.post('/documents', isAuth, resolver( async(req, res) => {
 
 router.post('/myprocess/process', isAuth, resolver( async(req, res) =>{
     const process = new Processes(req.body, res.locals, req.params);
+    console.log(req.body.id);
     const processValues = await process.findOneByParam({_id: req.body.id, user: res.locals.user});
     const state =  new ProcessStates(req.body, res.locals, req.params);
     const states = await state.findByParam({process: processValues});     
@@ -152,7 +153,7 @@ router.post('/processreceived', isAuth, resolver( async(req, res) => {
     res.send(JSON.stringify(processValues));
 }));
 
-router.post('/processreceived/process', isAuth, resolver( async(req, res) =>{
+router.post('/processreceived/process', isAuth, resolver( async (req, res) =>{
     const process = new Processes(req.body, res.locals, req.params);
     const processValues = await process.findOneByParam({$or: [{receiver: res.locals.id, _id: req.body.id}, {section_receiver: res.locals.sectionID, _id: req.body.id}]});
     const state =  new ProcessStates(req.body, res.locals, req.params);

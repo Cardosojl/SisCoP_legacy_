@@ -1,5 +1,5 @@
-import {appendElements, createSectionsSelect, setAttributes} from '/js/builders/elementsFunctions.js';
-import {request} from '/js/builders/ajax.js';
+import { setAttributes, createSectionsSelect, appendElements } from '/js/builders/elementsFunctions.js';
+import { request } from '/js/builders/ajax.js';
 
 window.addEventListener('load', () => {    
     getSections();    
@@ -7,7 +7,6 @@ window.addEventListener('load', () => {
 
 document.addEventListener('click', (e) => {
     const element = e.target;
-    console.log(`/${document.URL.split('/')[3]}/${document.URL.split('/')[4]}/edit/${document.URL.split('/')[6]}`)
 
     if(element.id === 'submitedit'){
         const formEdit = document.getElementById('formedit');
@@ -17,17 +16,15 @@ document.addEventListener('click', (e) => {
 
 async function getSections(){
     try {
-        const url = document.URL.split('/');
+        const [id] = document.URL.split('/').reverse();
         const sections = await request({
-            method: 'POST',
-            url:'/novoprocesso/sections',
-            params:``
+            method: 'GET',
+            url:'/request/sections?level=1'
         });
         const processSection = await request({
-            method: 'POST',
-            url: '/novoprocesso/processsection',
-            params: `process=${url[url.length-1]}`
-        })
+            method: 'GET',
+            url: `/request/processsection?_id=${id}`
+        });
         generateSections(sections, processSection);
     } catch (error) {
         console.log(error);

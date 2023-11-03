@@ -78,21 +78,21 @@ function generateProcesses(processes){
             
         const textDiv = createContainer('div', {}, [process, date]);
         const div1 = createContainer('div', {id: 'div1p', class: 'flexorientation--spaceb'}, [textDiv, buttonsDiv]);
-        const div2 = createContainer('div', {id: 'div2p', class: 'display_none'}, [deleteText, sendDelete, cancelDelete]);
-        const form = createContainer('form', {id: 'formp' ,class: 'list_iten'}, [div1, div2, id]);
+        const form = createContainer('form', {id: 'form', class: 'display_none'}, [deleteText, sendDelete, cancelDelete]);
+        const div2 = createContainer('div', {id: 'divButtons' ,class: 'list_iten'}, [div1, form, id]);
         
-        list.appendChild(form);
+        list.appendChild(div2);
         
         document.addEventListener('click', (e) =>{
             const element = e.target;
             let  year = document.getElementById('year');      
             if(element === deleteButton){
                 e.preventDefault();
-                form.setAttribute('class', 'list_iten_delete');            
-                div2.setAttribute('class', '');
+                div2.setAttribute('class', 'list_iten_delete');            
+                form.setAttribute('class', '');
                 div1.setAttribute('class', 'display_none');
             }
-            if(element === sendDelete){               
+            if(element === sendDelete){         
                 if(document.URL.split('/')[3] === 'meusprocessos'){
                     setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/delete/${i._id}`});
                 }
@@ -102,28 +102,29 @@ function generateProcesses(processes){
             }
             if(element === cancelDelete){
                 e.preventDefault();
-                form.setAttribute('class', 'list_iten');                
-                div2.setAttribute('class', 'display_none');
+                div2.setAttribute('class', 'list_iten');                
+                form.setAttribute('class', 'display_none');
                 div1.setAttribute('class', 'flexorientation--spaceb');
             }
             if(element === anotation){                
                 if(document.URL.split('/')[3] === 'meusprocessos'){
-                    setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/${i._id}/anotation/${i.title}`});
+                    window.location.href = `${document.URL}/${year.value}/${i._id}/anotation`;
                 }
                 if(document.URL.split('/')[3] === 'processosrecebidos'){
-                    setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/${i._id}/anotation/${i.title}`});
+                    window.location.href = `${document.URL}/${year.value}/${i._id}/anotation`;
                 }
             }
             if(element === process){                
                 if(document.URL.split('/')[3] === 'meusprocessos'){
-                    setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/${i._id}`})
+                    window.location.href = `${document.URL}/${year.value}/${i._id}`
                 }
                 if(document.URL.split('/')[3] === 'processosrecebidos'){
-                    setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/${i._id}`});
+                    window.location.href = `${document.URL}/${year.value}/${i._id}`
                 }            
             }
-            if(element ===  editButton){                 
-                setAttributes(form, {method: 'POST', action: `${document.URL}/${year.value}/editprocess/${i._id}`});
+            if(element ===  editButton){  
+                window.location.href = `${document.URL}/${year.value}/editprocess/${i._id}`             
+                setAttributes(div2, {method: 'POST', action: `${document.URL}/${year.value}/editprocess/${i._id}`});
             }
         });
     }    

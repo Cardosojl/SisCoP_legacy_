@@ -58,7 +58,7 @@ class ProcessStates {
     async create(){
         try {
             const State = {
-                process: this.body.elementid,
+                process: this.body.id,
                 user: this.locals.id,
                 state: this.body.state,
                 anotation: this.body.anotation,

@@ -23,12 +23,22 @@ router.get('/arquivadas', isAuth, resolver((req, res) => {
     res.render('messenger/archivedmessages', );
 }));
 
-router.get('/nova', isAuth, resolver((req, res) =>{    
+router.get('/nova', isAuth, resolver((req, res) =>{
     res.render('messenger/newmessage');    
 }));
 
-router.post('/nova', isAuth, resolver((req, res) => {    
-    res.render('messenger/processnewmessage', {processYear: req.body.year, processTitle: req.body.title, processId: req.body.id});    
+router.get('/nova/:id', isAuth, resolver( async (req, res) => { //++++++
+    const userId = (res.locals.user._id ).toString();
+    const processDB = new Processes(req.body, res.locals, req.params);
+    const processObj = await processDB.findOne();
+    const processUserId = processObj.user ? (processObj.user).toString() : null;
+    const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+
+    if (userId == processUserId || userId == processReceiverId) {
+        res.render('messenger/processnewmessage', { processYear: processObj.year, processId: processObj._id, processTitle: processObj.title });
+    } else {
+        throw { code: 203, message: "Operação não autorizada" };
+    }
 }));
 
 router.post('/nova/user/:title', isAuth, resolver( async(req, res) => {    
@@ -133,10 +143,6 @@ router.post('/arquivadas/:id/delete', isAuth, resolver( async(req, res) => {
     const message = new MsgArchived(req.body, res.locals, req.params);
     await message.deleteOne();
     res.redirect('/mensageiro/arquivadas');
-}));
-
-router.get('/teste', isAuth, resolver((req, res) => {    
-    res.render('messenger/mymessagesbox');   
 }));
 
 module.exports = router;

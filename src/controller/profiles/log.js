@@ -39,7 +39,7 @@ router.get('/register', resolver((req, res) =>{
     res.render('profiles/register');
 }));
 
-router.post('/saveregister', /*isAuth,*/ resolver( async(req, res) =>{
+router.post('/saveregister', isAuth, resolver( async(req, res) =>{
     const users = new Users(req.body, res.locals, req.params);
     const create = await users.register();    
     if(create.errors.length > 0){
@@ -75,7 +75,7 @@ router.get('/profile/:name', isAuth, resolver( async(req, res) => {
     res.render('profiles/profiledescription', {paramName: req.params.name, profile: userObj});   
 }));
 
-router.post('/sections', /*isAuth,*/ resolver( async(req, res) => {
+router.post('/sections', isAuth, resolver( async(req, res) => {
     const sections = new Sections(req.body, res.locals, req.params);
     const sectionsValues = await sections.findByParam();
     res.send(JSON.stringify(sectionsValues));

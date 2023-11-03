@@ -25,7 +25,7 @@ class Sections {
 
     async findByParam(param){
         try {
-            const sections = await SectionsModel.find(param).sort({name: 1});
+            const sections = await SectionsModel.find(param).sort({name: 1}).lean();
             return sections;            
         } catch (error) {
             throw new Error(error);            

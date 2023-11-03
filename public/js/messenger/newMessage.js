@@ -4,7 +4,7 @@ const receiver = document.getElementById('receiver');
 
 window.addEventListener('load', () => {
     generateElements();
-    getYearsValues();   
+    getYearsValues();
 });
 
 function generateElements(){

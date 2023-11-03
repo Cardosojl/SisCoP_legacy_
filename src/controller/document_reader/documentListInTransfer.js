@@ -22,11 +22,19 @@ router.post('/:year/delete/:id', isAuth, resolver( async(req, res) => {
         res.redirect(`/processosrecebidos`);    
 }));
 
-router.post('/:year/editprocess/:id', isAuth, resolver( async(req, res) => { 
+router.get('/:year/editprocess/:id', isAuth, resolver( async(req, res) => {
+    const userId = (res.locals.user._id ).toString();
     const process = new Processes(req.body, res.locals, req.params);
-    let processObj = await process.findOne();
-    processObj.nup = processObj.nup.replace(/([0-9]{5})([0-9]{6})([0-9]{4})([0-9]{2})/, '$1.$2/$3-$4');
-    res.render('document_reader/editprocess', {process: processObj});         
+    const processObj = await process.findOne();
+    const processUserId = processObj.user ? (processObj.user).toString() : null;
+    const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+
+    if (userId == processUserId || userId == processReceiverId) {
+        processObj.nup = processObj.nup.replace(/([0-9]{5})([0-9]{6})([0-9]{4})([0-9]{2})/, '$1.$2/$3-$4');
+        res.render('document_reader/editprocess', { process: processObj });
+    } else {
+        throw { code: 203, message: 'Operação não autorizada' };
+    }
 }));
 
 router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{ 
@@ -41,26 +49,35 @@ router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{
     }
 }));
 
-router.post('/:year/:id', isAuth, resolver( async(req, res) => {    
-    let message = req.session.error || null; //mudar isso
-    req.session.error = null;
-    res.render('document_reader/filesInTransfer', {error: message});
-}));
+router.get('/:year/:id', isAuth, resolver( async (req, res) => {    
+    const userId = (res.locals.user._id ).toString();
+    const process = new Processes(req.body, res.locals, req.params);
+    const processObj = await process.findOne();
+    const processUserId = processObj.user ? (processObj.user).toString() : null;
+    const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
 
-router.get('/:year/:id', isAuth, resolver( async(req, res) => {    
-    res.redirect('/processosrecebidos');
+    if (userId == processUserId || userId == processReceiverId) {
+        const message = null; 
+        if (req.session.error) {
+            message = req.session.error;
+            delete req.session.error
+        }
+        res.render('document_reader/files', { error: message });
+    } else {
+        throw { code: 203, message: 'Operação não autorizada' };
+    } 
 }));
 
 router.post('/:year/:id/edit/:fileid', isAuth, resolver( async(req, res) => { 
     const file = new Files(req.body, res.locals, req.params);
     await file.updateOne();    
-    res.redirect( 307, `/processosrecebidos/${req.params.year}/${req.params.id}`);   
+    res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);   
 }));
 
 router.post('/:year/:id/delete/:fileid', isAuth, resolver( async(req, res) => {     
     const file = new Files(req.body, res.locals, req.params);
     await file.deleteOne();
-    res.redirect(307, `/processosrecebidos/${req.params.year}/${req.params.id}`);    
+    res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);    
 }));
 
 router.post('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{ 
@@ -72,30 +89,39 @@ router.post('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{
     res.end(Buffer.from(doc.file));         
 }));
 
-router.post('/:year/:id/upload/:local/', isAuth, resolver( async(req,res, next) =>{        
+router.post('/:year/:id/upload/:local/', isAuth, resolver( async(req,res, next) =>{
     const uploads = await uploadAsync(req, res);
     const files = new Files(req.body, res.locals, req.params);
-
     for(let file of Object.values(uploads)[0]){               
         await files.createFileProcess(file.buffer, file.originalname, req.params.id);        
     }
-    res.redirect(307, `/processosrecebidos/${req.params.year}/${req.params.id}`);                                           
+    res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);                                           
 }));
 
-router.post('/:year/:id/anotation/:title', isAuth, resolver((req,res) => {                                         
-    res.render('document_reader/anotation', {title: req.params.title, year: req.params.year, link: req.params.id, baseurl: req.baseUrl, elementid: req.body.elementid});               
+router.get('/:year/:id/anotation', isAuth, resolver( async (req,res) => {                                         
+    const userId = (res.locals.user._id ).toString();
+    const process = new Processes(req.body, res.locals, req.params);
+    const processObj = await process.findOne();
+    const processUserId = processObj.user ? (processObj.user).toString() : null;
+    const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+
+    if (userId == processUserId || userId == processReceiverId) {
+        res.render('document_reader/anotation');
+    } else {
+        throw { code: 203, message: 'Operação não autorizada' };
+    }               
 }));
 
-router.post('/:year/:id/anotation/:title/create', isAuth, resolver( async(req,res) => {
+router.post('/:year/:id/anotation/create', isAuth, resolver( async(req,res) => {
     const state =  new ProcessStates(req.body, res.locals, req.params);
     await state.create();
-    res.redirect(307, `/processosrecebidos/${req.params.year}/${req.params.id}`);          
+    res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);          
 }));
 
 router.post('/:year/:id/anotation/:title/delete', isAuth, resolver( async(req,res) => {
     const state =  new ProcessStates(req.body, res.locals, req.params);
     await state.deleteOne();
-    res.redirect(307, `/processosrecebidos/${req.params.year}/${req.params.id}`);    
+    res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);    
 }));
 
 module.exports= router;

@@ -7,8 +7,10 @@ const Year =  require('../../models/document_reader/YearDB');
 const ProcessStates =  require('../../models/document_reader/ProcessesStatesDB');
 const router = express.Router();
 
-router.get('/', isAuth, resolver((req,res) =>{
-    res.render('document_reader/create');
+router.get('/', isAuth, resolver( async (req,res) =>{
+    const sections = new Sections(req.body, res.locals, req.params);
+    const sectionsValues = (await sections.findByParam({level: 1})).sort();
+    res.render('document_reader/create', { sections: [{ _id: '', name: '' }, ...sectionsValues] });
 }));
 
 router.post('/cadastro', isAuth, resolver( async(req, res) =>{
@@ -24,23 +26,21 @@ router.post('/cadastro', isAuth, resolver( async(req, res) =>{
     if(processObj.errors.length > 0){
         res.render('document_reader/create', {errors: processObj.errors});
     }else{       
-        res.redirect(307, `/meusprocessos/${processObj.process.year}/${processObj.process._id}`);
+        res.redirect(`/meusprocessos/${processObj.process.year}/${processObj.process._id}`);
     }
 }));
 
-router.post('/sections', isAuth, resolver( async(req, res) => {    
+router.post('/sections', isAuth, resolver( async(req, res) => {    ///DEL
     const sections = new Sections(req.body, res.locals, req.params);
     const sectionsValues = await sections.findByParam({level: 1});
     res.send(JSON.stringify(sectionsValues));    
 }));
 
-router.post('/processsection', isAuth, resolver( async(req, res) => {
+router.post('/processsection', isAuth, resolver( async(req, res) => { //DEL
     const process = new Processes(req.body, res.locals, req.params);
     const processObj =  await process.findOneByParam({_id: req.body.process});
     res.send(JSON.stringify(processObj));     
 }));
-
-router.post
 
 router.get('/montagemdeprocesso', isAuth, resolver((req,res) => {    
     res.render('document_maker/index');   
