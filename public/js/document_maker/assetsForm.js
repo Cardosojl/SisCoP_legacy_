@@ -21,9 +21,8 @@ window.addEventListener('load', () => {
 async function getSectionsValues() {
     try {
         const sections = await request({
-            method: 'POST',
-            url: '/requests/sections1',
-            params: ''
+            method: 'GET',
+            url: '/request/sections?level=1'
         });
 
         generateSectionsSelect(sections);        

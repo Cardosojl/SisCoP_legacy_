@@ -82,7 +82,7 @@ SisCoP is a legacy web application developed using JavaScript, MongoDB with Repl
   ### Initiate Database
   1. Create collections with initial values ​​for the application to work. (It is recommended to use replicaset):
   ```bash
-  node ./DBStart/initDB.js
+  npm run dbInit
   ```
   + After your run you should see:
   ```sh
