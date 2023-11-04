@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "dbInit": "node ./DBStart/initDB.js"
   },
   "keywords": [],
   "author": "Jorge Luiz Cardoso",

@@ -97,15 +97,14 @@ class Archived {
         }
     }
     
-    async findByFilter(numMessages){
-        try {            
-            let search = new Object();            
-            search.receiver = this.locals.id;
-            search[this.body.type] = new RegExp(`${this.body.search}`, 'i');
+    async findByFilter(filter, numMessages){
+        try {
+            let [parameter] = Object.keys(filter);
+            parameter = {[parameter]: new RegExp(`${filter[parameter]}`, 'i')};
             
-            const messages = await MessageModel.find(search).sort({createdAt: -1}).
+            const messages = await MessageModel.find({ ...parameter, receiver: this.locals.id}).sort({createdAt: -1}).
             limit(numMessages).skip((this.params.page * numMessages)).populate('sender').populate('process').lean()
-            const number = await MessageModel.find(search).sort({createdAt: -1}).count();
+            const number = await MessageModel.find({ ...parameter, receiver: this.locals.id}).sort({createdAt: -1}).count();
             return {messages: messages, count: number};            
         } catch (error) {
             throw new Error(error.message);           

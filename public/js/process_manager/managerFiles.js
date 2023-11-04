@@ -13,9 +13,8 @@ window.addEventListener('load', () =>{
 async function getValues(){
     try {        
         const documents = await request({
-            method: 'POST',
-            url: `/requests/documents`,
-            params: `id=${document.URL.split('/')[4]}`
+            method: 'GET',
+            url: `/request/documents?process=${document.URL.split('/')[4]}`
         });        
         generateFiles(documents);              
     } catch (error) {
@@ -26,11 +25,9 @@ async function getValues(){
 async function getStates(){
     try {
         const states = await request({
-            method: 'POST',
-            url: `/requests/states`,
-            params: `id=${document.URL.split('/')[4]}`
+            method: 'GET',
+            url: `/request/states?process=${document.URL.split('/')[4]}`
         });
-        console.log(states)
         generateStates(states);
     } catch (error) {
         console.log(error);  
@@ -43,7 +40,7 @@ function generateFiles(documents){
     if(documents.length > 0){
         for(let i of documents){
             const file = createElements('input', {type: 'submit', class: 'manager_button highlighted', value: `${i.filename}${i.extension}`});       
-            const form = createContainer('form', {name: 'fileform', target: '_blank', method: 'POST', action: `/acompanharprocessos/${year.innerHTML}/${i.process}/${i._id}`}, [file]);
+            const form = createContainer('a', {name: 'fileform', target: '_blank', href: `/acompanharprocessos/${year.innerHTML}/${i.process}/${i._id}`}, [file]);
             list.appendChild(form);       
         }
     }else{

@@ -96,14 +96,13 @@ class MsgSent {
         }
     }
 
-    async findByFilter(numMessages){
+    async findByFilter(filter, numMessages){
         try {
-            let search1 =  new Object();           
-            search1.sender = this.locals.id;
-            search1[this.body.type] = new RegExp(`${this.body.search}`, 'i');
+            let [parameter] = Object.keys(filter);
+            parameter = {[parameter]: new RegExp(`${filter[parameter]}`, 'i')};
     
-            const messages = await MessageModel.find(search1).sort({createdAt: -1}).limit(numMessages).skip((this.params.page * numMessages)).populate('sender').populate('section_receiver').populate('receiver').populate('process').lean()
-            const number = await MessageModel.find(search1).sort({createdAt: -1}).count()
+            const messages = await MessageModel.find({ ...parameter, sender: this.locals.id}).sort({createdAt: -1}).limit(numMessages).skip((this.params.page * numMessages)).populate('sender').populate('section_receiver').populate('receiver').populate('process').lean()
+            const number = await MessageModel.find({ ...parameter, sender: this.locals.id}).sort({createdAt: -1}).count();
             return {messages: messages, count: number};           
         } catch (error) {
             throw new Error(error.message);            

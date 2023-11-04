@@ -751,6 +751,7 @@ select{
 }
 .manager_button{
     width: auto;
+    margin-bottom: 15px;
     padding: 10px;
     background-color: rgb(225, 225, 230);
     border: none;

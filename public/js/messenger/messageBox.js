@@ -29,10 +29,9 @@ async function getSearchValues(number){
         const search =  document.getElementById('search');
         const typeSearch = document.getElementById('typeofsearch');
         const messages = await request({
-            method: 'POST',
-            url: `/requests/${local}/search${String(number)/*.padStart(3, 0)*/}`,
-            params: `type=${typeSearch.value}&search=${search.value}`
-        });        
+            method: 'GET',
+            url: `/request/${local}/search/${String(number)}?${typeSearch.value}=${search.value}`
+        });
         generateElements(messages, number);        
     } catch (error) {
         console.log(error);        

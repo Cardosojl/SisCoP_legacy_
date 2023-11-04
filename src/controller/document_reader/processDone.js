@@ -12,8 +12,8 @@ router.get('/', isAuth, resolver((req, res) => {
     res.render('document_reader/processdone');           
 }));
 
-router.post('/:year/:id', isAuth, resolver( async(req, res) => {    
-    let message = req.session.error || null; //mudar isso
+router.get('/:year/:id', isAuth, resolver( async(req, res) => {    
+    let message = req.session.error || null;
     req.session.error = null;
     res.render('document_reader/donefiles', {error: message});
 }));
@@ -32,7 +32,7 @@ router.post('/:year/:id/:local/done/process', isAuth, resolver( async(req, res) 
     }    
 }));
 
-router.post('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{ 
+router.get('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{ 
     const file = new Files(req.body, res.locals, req.params);
     const doc = await file.findOneByParam({_id: req.params.fileid});       
     

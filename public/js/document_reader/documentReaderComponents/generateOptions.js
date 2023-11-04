@@ -4,19 +4,17 @@ function generateOptions(process){
     const section = document.getElementById('idusersection');    
     const processOptions = document.getElementById('processoptions');       
     
-    if(section.innerHTML === 'Chefe da SALC' || section.innerHTML === 'SALC'){         
+    if(section.innerHTML === 'Pregoeiro'){         
         if(process.done === true){
-            const conversor = createElements('input', {type: 'submit', id: 'conversor', class: 'button_disable', value: 'Juntar em um PDF', disabled: ''});
             const returnProcess = createElements('input', {type: 'submit', id: 'returnprocess', class: 'redbutton', value: 'Retificar Processo'})
             const processId = createElements('input', {type: 'hidden', name: 'process', value: process._id});
-            const form = createContainer('form', {id: 'endprocess', class: 'bar_color flexorientation--end'}, [conversor, returnProcess, processId]);
+            const form = createContainer('form', {id: 'endprocess', class: 'bar_color flexorientation--end'}, [returnProcess, processId]);
             processOptions.appendChild(form);
             return 
         }else{
-            const conversor = createElements('input', {type: 'submit', id: 'conversor', class: 'button', value: 'Juntar em um PDF'});
             const doneProcess = createElements('input', {type: 'submit', id: 'doneprocess', class: 'button', value: 'Concluir Processo'});
             const processId = createElements('input', {type: 'hidden', name: 'process', value: process._id});
-            const form = createContainer('form', {id: 'endprocess', class: 'bar_color flexorientation--end'}, [conversor, doneProcess, processId]);
+            const form = createContainer('form', {id: 'endprocess', class: 'bar_color flexorientation--end'}, [doneProcess, processId]);
             processOptions.appendChild(form);
             return
         }

@@ -4,7 +4,9 @@ const receiver = document.getElementById('receiver');
 
 window.addEventListener('load', () => {
     generateElements();
-    getYearsValues();
+    if (document.getElementById('yeardiv')) {
+        getYearsValues();
+    }
 });
 
 function generateElements(){
@@ -16,11 +18,10 @@ function generateElements(){
 async function getYearsValues(){
     try {
         const year = await request({
-            method: 'POST',
-            url: '/requests/allyears',
-            params: ''
-        });
-        generateYears(year);        
+            method: 'GET',
+            url: '/request/years',
+        }); 
+        generateYears(year);
     } catch (error) {
         console.log(error);        
     }
@@ -60,9 +61,8 @@ document.addEventListener('change', async (e) =>{
 async function getUserSection(section){
     try {
         const users = await request({
-            method: 'POST',
-            url: '/requests/usersection',
-            params: `section=${section}`
+            method: 'GET',
+            url: `/request/users?section=${section}`
         });
         return users;      
     } catch (error) {
@@ -183,10 +183,9 @@ function userProcessSend(selectProcess){
 async function getUserValues(){    
     try {        
         const users = await request({
-            method: 'POST',
-            url: '/requests/users',
-            params: ''
-        });               
+            method: 'GET',
+            url: '/request/users'
+        });         
         generateUsers(users);
     } catch (error) {
         console.log(error);        
@@ -196,10 +195,14 @@ async function getUserValues(){
 async function getProcessValues(){
     try {
         const year = document.getElementById('year');
+        const user = await request({
+            method: 'GET',
+            url: '/request/whoami'
+        });
+
         const processes = await request({
-            method: 'POST',
-            url: '/requests/messageprocesses',
-            params: `year=${year.value}`
+            method: 'GET',
+            url: `/request/processes?year=${year.value}&or[0]={"user":"${user._id}"}&or[1]={"receiver":"${user._id}"}&or[2]={"section_receiver":"${user.section._id}"}`
         });
         generateProcesses(processes);
     } catch (error) {
@@ -210,10 +213,10 @@ async function getProcessValues(){
 async function getSectionsValues(){    
     try {
         const sections = await request({
-            method: 'POST',
-            url:'/requests/sections9',
-            params: ''
+            method: 'GET',
+            url:'/request/sections'
         });
+        console.log(sections);
         generateSections(sections)        
     } catch (error) {
         console.log(error);

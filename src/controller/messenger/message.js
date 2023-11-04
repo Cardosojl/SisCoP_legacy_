@@ -27,7 +27,7 @@ router.get('/nova', isAuth, resolver((req, res) =>{
     res.render('messenger/newmessage');    
 }));
 
-router.get('/nova/:id', isAuth, resolver( async (req, res) => { //++++++
+router.get('/nova/:id', isAuth, resolver( async (req, res) => {
     const userId = (res.locals.user._id ).toString();
     const processDB = new Processes(req.body, res.locals, req.params);
     const processObj = await processDB.findOne();
@@ -41,7 +41,7 @@ router.get('/nova/:id', isAuth, resolver( async (req, res) => { //++++++
     }
 }));
 
-router.post('/nova/user/:title', isAuth, resolver( async(req, res) => {    
+router.post('/nova/user/:title', isAuth, resolver( async (req, res) => {    
     const message = new Msg(req.body, res.locals, req.params);
     const messageSent = new MsgSent(req.body, res.locals, req.params);
     const process = new Processes(req.body, res.locals, req.params);
@@ -58,7 +58,7 @@ router.post('/nova/user/:title', isAuth, resolver( async(req, res) => {
     res.redirect('/mensageiro/enviadas');
 }));
 
-router.post('/nova/section/:title', isAuth, resolver( async(req, res) => {      
+router.post('/nova/section/:title', isAuth, resolver( async (req, res) => {      
     const users = new Users(req.body, res.locals, req.params);
     const message = new Msg(req.body, res.locals, req.params);
     const messageSent = new MsgSent(req.body, res.locals, req.params);
@@ -81,7 +81,7 @@ router.post('/nova/section/:title', isAuth, resolver( async(req, res) => {
     res.redirect('/mensageiro/enviadas');    
 }));
 
-router.post('/novasemprocesso/user/:title', isAuth, resolver( async(req, res) => {      
+router.post('/novasemprocesso/user/:title', isAuth, resolver( async (req, res) => {      
     const message = new Msg(req.body, res.locals, req.params);
     const messageSent = new MsgSent(req.body, res.locals, req.params);
     await message.create();
@@ -89,7 +89,7 @@ router.post('/novasemprocesso/user/:title', isAuth, resolver( async(req, res) =>
     res.redirect('/mensageiro/enviadas');
 }));
 
-router.post('/novasemprocesso/section/:title', isAuth, resolver( async(req, res) => {      
+router.post('/novasemprocesso/section/:title', isAuth, resolver( async (req, res) => {      
     const users = new Users(req.body, res.locals, req.params);
     const message = new Msg(req.body, res.locals, req.params);
     const messageSent = new MsgSent(req.body, res.locals, req.params);
@@ -99,50 +99,80 @@ router.post('/novasemprocesso/section/:title', isAuth, resolver( async(req, res)
     res.redirect('/mensageiro/enviadas');
 }));
 
-router.get('/caixadeentrada/:id', isAuth, resolver( async(req, res) => {   
+router.get('/caixadeentrada/:id', isAuth, resolver( async (req, res) => {   
     const message = new Msg(req.body, res.locals, req.params);
     const messageObj = await message.findOneReceived();
     res.render('messenger/messagereader', {message: messageObj.message});  
 }));
 
-router.get('/enviadas/:id', isAuth, resolver( async(req, res) => {   
+router.get('/enviadas/:id', isAuth, resolver( async (req, res) => {   
     const message = new MsgSent(req.body, res.locals, req.params);
     const messageObj = await message.findOneSent();    
     res.render('messenger/mymessagereader', {message: messageObj.message});    
 }));
 
-router.get('/arquivadas/:id', isAuth, resolver( async(req, res) => {   
+router.get('/arquivadas/:id', isAuth, resolver( async (req, res) => {   
     const message = new MsgArchived(req.body, res.locals, req.params);
     const messageObj = await message.findOne();
     res.render('messenger/archivedmessagereader', {message: messageObj.message});  
 }));
 
 
-router.post('/caixadeentrada/:id/archive', isAuth, resolver( async(req, res) => {   
+router.post('/caixadeentrada/:id/archive', isAuth, resolver( async (req, res) => {   
     const message = new Msg(req.body, res.locals, req.params);
     const messagearchived = new MsgArchived(req.body, res.locals, req.params);
     const messageValues = await message.findOneByParam({_id: req.params.id});
-    await messagearchived.create(messageValues);
-    await message.deleteOneReceived();
-    res.redirect('/mensageiro/caixadeentrada');
+    const receiverId = (messageValues.receiver).toString();
+    const userId = (res.locals.user._id).toString();
+
+    if (receiverId == userId) {
+        await messagearchived.create(messageValues);
+        await message.deleteOneReceived();
+        res.redirect('/mensageiro/caixadeentrada');
+    } else {
+        throw { code: 203, message: 'Operação não autorizada'};
+    }
 }));
 
-router.post('/caixadeentrada/:id/delete', isAuth, resolver( async(req, res) => {   
+router.post('/caixadeentrada/:id/delete', isAuth, resolver( async (req, res) => {
     const message = new Msg(req.body, res.locals, req.params);
-    await message.deleteOneReceived();
-    res.redirect('/mensageiro/caixadeentrada');
+    const element = await message.findOneByParam({ _id: req.params.id });
+    const receiverId = (element.receiver).toString();
+    const userId = (res.locals.user._id).toString();
+    
+    if (receiverId == userId) {
+        await message.deleteOneReceived();
+        res.redirect('/mensageiro/caixadeentrada');
+    } else {
+        throw { code: 203, message: 'Operação não autorizada'};
+    }
 }));
 
-router.post('/enviadas/:id/delete', isAuth, resolver( async(req, res) => {    
+router.post('/enviadas/:id/delete', isAuth, resolver( async (req, res) => {    
     const message = new MsgSent(req.body, res.locals, req.params);
-    await message.deleteOneSent();
-    res.redirect('/mensageiro/enviadas');      
+    const element = await message.findOneByParam({ _id: req.params.id });
+    const senderId = (element.sender).toString();
+    const userId = (res.locals.user._id).toString();
+
+    if (senderId == userId) {
+        await message.deleteOneSent();
+        res.redirect('/mensageiro/enviadas');
+    } else {
+        throw { code: 203, message: 'Operação não autorizada' };
+    }
 }));
 
-router.post('/arquivadas/:id/delete', isAuth, resolver( async(req, res) => {   
+router.post('/arquivadas/:id/delete', isAuth, resolver( async (req, res) => {   
     const message = new MsgArchived(req.body, res.locals, req.params);
-    await message.deleteOne();
-    res.redirect('/mensageiro/arquivadas');
+    const element = await message.findOneByParam({ _id: req.params.id });
+    const receiverId = (element.receiver).toString();
+    const userId = (res.locals.user._id).toString();
+    if (receiverId == userId) {
+        await message.deleteOne();
+        res.redirect('/mensageiro/arquivadas');
+    } else {
+        throw { code: 203, message: 'Operação não autorizada' };
+    }
 }));
 
 module.exports = router;

@@ -30,18 +30,6 @@ router.post('/cadastro', isAuth, resolver( async(req, res) =>{
     }
 }));
 
-router.post('/sections', isAuth, resolver( async(req, res) => {    ///DEL
-    const sections = new Sections(req.body, res.locals, req.params);
-    const sectionsValues = await sections.findByParam({level: 1});
-    res.send(JSON.stringify(sectionsValues));    
-}));
-
-router.post('/processsection', isAuth, resolver( async(req, res) => { //DEL
-    const process = new Processes(req.body, res.locals, req.params);
-    const processObj =  await process.findOneByParam({_id: req.body.process});
-    res.send(JSON.stringify(processObj));     
-}));
-
 router.get('/montagemdeprocesso', isAuth, resolver((req,res) => {    
     res.render('document_maker/index');   
 }));

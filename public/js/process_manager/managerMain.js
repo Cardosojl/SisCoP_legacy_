@@ -25,7 +25,7 @@ document.addEventListener('click', (e) => {
         }
     }    
     if(e.target.id === 'element' && e.target.tagName.toLowerCase() === 'button'){
-        setAttributes(document.getElementById(e.target.value), {method: 'POST', action: `/acompanharprocessos/${e.target.value}`});        
+        document.location.href = `/acompanharprocessos/${e.target.value}`;        
     }    
     if(e.target.id === 'nextimg' && searchNext.className === 'arrow'){        
         getSearchValues(document.getElementById('searchindex').innerHTML);
@@ -42,8 +42,8 @@ searchBar.addEventListener('keyup', async() => {
 async function getSections(){
     try {
         const sections = await request({
-            method: 'POST',
-            url: 'requests/sections1'
+            method: 'GET',
+            url: 'request/sections?level=1'
         });        
         generateSections(sections);
     } catch (error) {
@@ -57,9 +57,8 @@ async function getSearchValues(number){
         const typeSearch = document.getElementById('typeofsearch');
         const searchBar = document.getElementById('search');
         const processes = await request({
-            method: 'POST',
-            url: `/requests/manager/search${String(number)}`,
-            params: `origin=${sectionTitle.innerHTML}&type=${typeSearch.value}&search=${searchBar.value}`
+            method: 'GET',
+            url: `/request/manager/search/${String(number)}?origin=${sectionTitle.innerHTML}&type=${typeSearch.value}&search=${searchBar.value}`
         });        
         elementGenerator(processes, number);  
     }catch(error){
@@ -105,7 +104,7 @@ function createHeaderList(){
 }
 
 function createBodyList(process){    
-    const form = createElements('form', {class: 'list_manager flexorientation--spaceb margin_medium', id: process._id});
+    const div = createElements('div', {class: 'list_manager flexorientation--spaceb margin_medium', id: process._id});
     const div1 = createElements('div', {class: 'manager_process_title'});
     const div2 = createElements('div', {class: 'manager_process_title'});
     const div3 = createElements('div', {class: 'manager_process_title'});     
@@ -135,8 +134,8 @@ function createBodyList(process){
         div3.appendChild(processStatusDate);        
     }
 
-    appendElements(form, [div1, div2, div3, elementID]);    
-    processList.appendChild(form);
+    appendElements(div, [div1, div2, div3, elementID]);    
+    processList.appendChild(div);
 }
 
 function generateArrows(processes, elementsInPage, number){

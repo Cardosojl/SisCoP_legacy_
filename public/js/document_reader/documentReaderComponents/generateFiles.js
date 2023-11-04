@@ -4,7 +4,7 @@ function generateFiles(documents, process){
     const list = document.getElementById('list');
     if(documents.length > 0){
         for(let i of documents){
-            const file = createElements('input', {type: 'submit', class: 'transparentbutton highlighted', value: `${i.filename}${i.extension}`});
+            const file = createElements('a', {class: 'transparentbutton highlighted'}, `${i.filename}${i.extension}`);
             const [editButton, deleteButton] = generateFilesButtons(process);
             const buttonsDiv = createContainer('div', {}, [editButton, deleteButton]);
             const div1 = createContainer('div', {}, []);
@@ -87,9 +87,8 @@ function generateListClickListener(editButton, deleteButton, file, div1, div2, d
             });
         }
         if(element === file){
-            form.setAttribute('target', '_blank');
-            form.setAttribute('method', 'POST');
-            form.setAttribute('action', `${url}/${elements._id}`);
+            file.setAttribute('target', '_blank');
+            file.setAttribute('href', `${url}/${elements._id}`);
         }        
     });
 }

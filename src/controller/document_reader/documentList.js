@@ -12,7 +12,7 @@ router.get('/', isAuth, resolver((req, res) => {
     res.render('document_reader/process');           
 }));
 
-router.get('/:year/editprocess/:id', isAuth, resolver( async(req, res) => { // passar para get
+router.get('/:year/editprocess/:id', isAuth, resolver( async(req, res) => {
     const userId = (res.locals.user._id ).toString();
     const process = new Processes(req.body, res.locals, req.params);
     const processObj = await process.findOne();
@@ -27,7 +27,7 @@ router.get('/:year/editprocess/:id', isAuth, resolver( async(req, res) => { // p
     }
 }));
 
-router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{ ///ok    
+router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{   
     const process = new Processes(req.body, res.locals, req.params);
     const update = await process.updateOne();
     if(update.errors.length > 0){
@@ -39,7 +39,7 @@ router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{ ///ok
     }
 }));
 
-router.post('/:year/delete/:id', isAuth, resolver( async(req, res) => { ///ok
+router.post('/:year/delete/:id', isAuth, resolver( async(req, res) => { 
     const process = new Processes(req.body, res.locals, req.params);    
     const states = new ProcessStates(req.body, res.locals, req.params);
     const files = new Files(req.body, res.locals, req.params);
@@ -81,7 +81,7 @@ router.post('/:year/:id/delete/:fileid', isAuth, resolver( async(req, res) => {
     res.redirect(`/meusprocessos/${req.params.year}/${req.params.id}`);    
 }));
 
-router.post('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{
+router.get('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{
     const file = new Files(req.body, res.locals, req.params);
     const doc = await file.findOneByParam({_id: req.params.fileid});    
     

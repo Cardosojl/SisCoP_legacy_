@@ -4,7 +4,7 @@ require('../src/models/profiles/SectionsDB');
 const entrace = mongoose.model('section');
 
 const leve1 = ['Transporte','Recursos Humanos','Administrativo', 'Comunicações', 'Almoxarifado', 'Informática'];
-const level2 = ['Fiscal', 'Ordenador de Despesas', 'Seção de Orçamentos'];
+const level2 = ['Fiscal', 'Ordenador de Despesas', 'Seção de Orçamentos', 'Pregoeiro'];
 const level10 = ['ADM'];
 
 const createSection = async () => {

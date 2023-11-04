@@ -24,12 +24,14 @@ router.post('/:year/delete/:id', isAuth, resolver( async(req, res) => {
 
 router.get('/:year/editprocess/:id', isAuth, resolver( async(req, res) => {
     const userId = (res.locals.user._id ).toString();
+    const userSection = (res.locals.sectionID).toString();
     const process = new Processes(req.body, res.locals, req.params);
     const processObj = await process.findOne();
     const processUserId = processObj.user ? (processObj.user).toString() : null;
     const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+    const processReceivedSection = processObj.section_receiver ? (processObj.section_receiver).toString(): null;
 
-    if (userId == processUserId || userId == processReceiverId) {
+    if (userId == processUserId || userId == processReceiverId || userSection == processReceivedSection) {
         processObj.nup = processObj.nup.replace(/([0-9]{5})([0-9]{6})([0-9]{4})([0-9]{2})/, '$1.$2/$3-$4');
         res.render('document_reader/editprocess', { process: processObj });
     } else {
@@ -51,12 +53,14 @@ router.post('/:year/edit/:id', isAuth, resolver( async(req, res) =>{
 
 router.get('/:year/:id', isAuth, resolver( async (req, res) => {    
     const userId = (res.locals.user._id ).toString();
+    const userSection = (res.locals.sectionID).toString();
     const process = new Processes(req.body, res.locals, req.params);
     const processObj = await process.findOne();
     const processUserId = processObj.user ? (processObj.user).toString() : null;
     const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+    const processReceivedSection = processObj.section_receiver ? (processObj.section_receiver).toString(): null;
 
-    if (userId == processUserId || userId == processReceiverId) {
+    if (userId == processUserId || userId == processReceiverId || userSection == processReceivedSection) {
         const message = null; 
         if (req.session.error) {
             message = req.session.error;
@@ -80,7 +84,7 @@ router.post('/:year/:id/delete/:fileid', isAuth, resolver( async(req, res) => {
     res.redirect(`/processosrecebidos/${req.params.year}/${req.params.id}`);    
 }));
 
-router.post('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{ 
+router.get('/:year/:id/:fileid', isAuth, resolver( async(req, res) =>{ 
     const file = new Files(req.body, res.locals, req.params);
     const doc = await file.findOneByParam({_id: req.params.fileid});       
     
@@ -100,12 +104,14 @@ router.post('/:year/:id/upload/:local/', isAuth, resolver( async(req,res, next) 
 
 router.get('/:year/:id/anotation', isAuth, resolver( async (req,res) => {                                         
     const userId = (res.locals.user._id ).toString();
+    const userSection = (res.locals.sectionID).toString();
     const process = new Processes(req.body, res.locals, req.params);
     const processObj = await process.findOne();
     const processUserId = processObj.user ? (processObj.user).toString() : null;
     const processReceiverId = processObj.receiver ? (processObj.receiver).toString() : null;
+    const processReceivedSection = processObj.section_receiver ? (processObj.section_receiver).toString(): null;
 
-    if (userId == processUserId || userId == processReceiverId) {
+    if (userId == processUserId || userId == processReceiverId || userSection == processReceivedSection) {
         res.render('document_reader/anotation');
     } else {
         throw { code: 203, message: 'Operação não autorizada' };

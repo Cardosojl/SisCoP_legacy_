@@ -28,22 +28,18 @@ function getLocal(){
 document.addEventListener('click', (e) => {
     const element = e.target;
     const [ id, year, path ] = document.URL.split('/').reverse();
-    const url = [ path, year, id ].join('/');
     const processInfo  = [ year, id ].join('/');
     const local = getLocal();
-    const processTitle = document.getElementById('processtitle').innerHTML;
     const statusButton = document.getElementById('statusbutton');
     const descriptionButton = document.getElementById('descriptionbutton');
     const newStatusButton = document.getElementById('newstatusbutton');
     const sendFile = document.getElementById('sendfile');
     const sendButton =  document.getElementById('sendbutton');
-    const conversor =  document.getElementById('conversor');
     const doneProcess = document.getElementById('doneprocess');
     const returnProcess = document.getElementById('returnprocess');
     const optionsForm = document.getElementById('endprocess');       
 
     if(element === newStatusButton){
-        const newStatusForm =  document.getElementById('newstatusform');
         window.location.href = `${id}/anotation`;     
     }
     if(element === statusButton || element.parentElement === statusButton){
@@ -75,9 +71,6 @@ document.addEventListener('click', (e) => {
     }
     if(element === sendButton || element.parentElement === sendButton){
         window.location.href = `/mensageiro/nova/${id}`;        
-    }
-    if(element === conversor){        
-        setAttributes(optionsForm, {method: 'POST', action: `/conversor/arquivos/${processInfo}/${processTitle}/${local}`});
     }
     if(element === doneProcess){        
         setAttributes(optionsForm, {method: 'POST', action: `/concluidos/${processInfo}/${local}/done/process`});

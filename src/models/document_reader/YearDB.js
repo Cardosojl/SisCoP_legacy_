@@ -36,6 +36,16 @@ class Years {
         }
     }
 
+    async findByParam(param){
+        try {
+            const message = await YearModel.find(param).lean();
+            return message;
+            
+        } catch (error) {
+            throw new Error(error);
+        }        
+    }  
+
     async findOneYear(value){
         try {
             const year = await YearModel.findOne({year: value}).lean();

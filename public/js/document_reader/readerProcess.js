@@ -16,12 +16,19 @@ document.addEventListener('change', (e) => {
 });
 
 async function getValues(){
+    let  year = document.getElementById('year');
+    const path = getLocal();
     try {
-        let  year = document.getElementById('year');       
+        const user = await request({
+            method: 'GET',
+            url: `/request/whoami`
+        });
+
+        const url = path == 'myprocess' ? `&user=${user._id}`: `&or[0]={"receiver":"${user._id}"}&or[1]={"section_receiver":"${user.section._id}"}`;
+
         const processes = await request({
-            method: 'POST',
-            url: `/requests/${getLocal()}/`,
-            params: `year=${year.value}`
+            method: 'GET',
+            url: `/request/processes?year=${year.value}${url}`
         });              
         generateProcesses(processes);        
     } catch (error) {
@@ -32,9 +39,8 @@ async function getValues(){
 async function getYearValues(){
     try {
         const year = await request({
-            method: 'POST',
-            url: '/requests/allyears',
-            params: ''
+            method: 'GET',
+            url: '/request/years'
         });
         generateYears(year);        
     } catch (error) {
@@ -116,15 +122,14 @@ function generateProcesses(processes){
             }
             if(element === process){                
                 if(document.URL.split('/')[3] === 'meusprocessos'){
-                    window.location.href = `${document.URL}/${year.value}/${i._id}`
+                    window.location.href = `${document.URL}/${year.value}/${i._id}`;
                 }
                 if(document.URL.split('/')[3] === 'processosrecebidos'){
-                    window.location.href = `${document.URL}/${year.value}/${i._id}`
+                    window.location.href = `${document.URL}/${year.value}/${i._id}`;
                 }            
             }
             if(element ===  editButton){  
-                window.location.href = `${document.URL}/${year.value}/editprocess/${i._id}`             
-                setAttributes(div2, {method: 'POST', action: `${document.URL}/${year.value}/editprocess/${i._id}`});
+                window.location.href = `${document.URL}/${year.value}/editprocess/${i._id}`;
             }
         });
     }    

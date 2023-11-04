@@ -14,11 +14,11 @@
         <small>Remetente: {{message.sender.pg}} {{message.sender.name}}</small>
         <div class="flexorientation--spaceb">
             <div>
-                <form id="processmessage">
+                <div id="processmessage">
                     <label>Processo:</label>                                       
                     <input type="hidden" id="process" name="process" value="{{message.process._id}}">
                     <input type="hidden" id="processname" value="{{message.process_title}}">
-                </form>
+                </div>
             </div>
             <form method="POST" action="/mensageiro/arquivadas/{{message._id}}/delete">
                 <button class="redbutton" style="margin-top: 0px; margin-left: 20px;"><img src="/img/trash.png" style="height: 16px;"></button>
