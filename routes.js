@@ -19,8 +19,6 @@ const processManager = require('./src/controller/process_manager/manager');
 
 const ajaxController =  require('./src/controller/xmlHttpRequest/ajaxRequestControler');
 
-const ajaxControllers =  require('./src/controller/xmlHttpRequest/ajaxRequestsControler'); /** */
-
 
 router.use(log);
 router.use(profile);
@@ -31,9 +29,7 @@ router.use('/concluidos', documentReaderD);
 router.use('/novoprocesso', createProcess);
 router.use('/mensageiro', messenger);
 router.use('/acompanharprocessos', processManager);
-router.use('/requests', ajaxController);
-
-router.use('/request', ajaxControllers);
+router.use('/request', ajaxController);
 
 
 module.exports = router;
